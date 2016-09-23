@@ -1,4 +1,4 @@
-# /init.pp:
+# manifests/init.pp:
 
 if $::hostname == 'node1' {
 
@@ -41,7 +41,15 @@ elsif $::hostname == 'master' {
   package { 'puppetserver':
     ensure => 'latest',
   }
-  
+
+  exec { 'domain_autosign':
+    command =>
+      'if ! grep *.mihura.com /etc/hosts ; then
+        echo "*.mihura.com" >> /etc/puppetlabs/puppet/autosign.conf
+      fi',
+    provider => shell,
+  }
+
   service { 'puppetserver': 
     ensure => 'running',
   }
