@@ -13,7 +13,7 @@
 
 <h3>Screenshots:</h3>
 * <b>Vagrant up:</b>
- - <b>Master/b>
+ - <b>Master</b>
 ![imgs](pic/master.png "imgs")
 
  - <b>Node/b>
