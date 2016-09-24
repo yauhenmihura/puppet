@@ -18,8 +18,8 @@ class exit::master {
     content => template('/vagrant/exit/templates/master/autosign.conf.erb'),
     owner   => root,
     group   => root,
-    mode => '0644'
-   }
+    mode    => '0644'
+  }
 
 # Start puppet server
   service { 'puppetserver':

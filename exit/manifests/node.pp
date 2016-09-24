@@ -13,13 +13,13 @@ class exit::node {
     content => template('/vagrant/exit/templates/node/puppet.conf.erb'),
     owner   => root,
     group   => root,
-    mode => '0644'
-   }
+    mode    => '0644'
+  }
 
 # Run puppet agent
   service { 'puppet':
     ensure => 'running',
-    enable => 'true',
+    enable => true,
   }
 }
 
