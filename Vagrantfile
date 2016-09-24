@@ -25,7 +25,7 @@ Vagrant.configure(2) do |config|
             rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
             yum install puppet -y
 	    source ~/.bash_profile
-	    puppet apply /vagrant/manifests/init.pp
+	    puppet apply --modulepath=/vagrant/ -e "include exit"
             SHELL
               node.vm.provider "virtualbox" do |vb|
                 vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
