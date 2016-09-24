@@ -16,17 +16,14 @@
  - <b>Master</b>
 ![imgs](pic/master.png "imgs")
 
- - <b>Node/b>
+ - <b>Node</b>
  ![imgs](pic/node.png "imgs")
 
- - <b>Full log: /b>
+ - <b>Full log: </b>
 * ```vagrant_up.log``` ([vagrant_up.log](/pic/vagrant_up.log))
 
 <h3>Test on node:</h3>
-![imgs](pic/node.png "imgs")
+![imgs](pic/node_check.png "imgs")
 
 <h3>Test with puppet-lint:</h3>
-![imgs](pic/puppet-lint.png "imgs")
-
-
-
+![imgs](pic/puppet_lint.png "imgs")
