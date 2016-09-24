@@ -1,6 +1,7 @@
 # This is repo for final task 
 
 <h3>Exit task results:</h3>
+<b> For applying manifests I used command "puppet apply --modulepath=/vagrant/ -e "include exit"" in Vagrantfile 
 *  ```Vagrantfile``` ([Vagrantfile](Vagrantfile))
 
 <h3>Manifests:</h3>
@@ -19,8 +20,7 @@
  - <b>Node</b>
  ![imgs](pic/node.png "imgs")
 
- - <b>Full log: </b>
-* ```vagrant_up.log``` ([vagrant_up.log](/pic/vagrant_up.log))
+ - <b>Full log: </b> ```vagrant_up.log``` ([vagrant_up.log](/pic/vagrant_up.log))
 
 <h3>Test on node:</h3>
 ![imgs](pic/node_check.png "imgs")
