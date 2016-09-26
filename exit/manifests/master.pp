@@ -1,6 +1,6 @@
 # manifests/master.pp:
 
-class exit::master {
+class exit::master($serv_version = '2.6.0-1.el7') {
 
 # Add node dns to hosts
   host { 'node1.mihura.com':
@@ -10,7 +10,8 @@ class exit::master {
 
 # Install puppet server
   package { 'puppetserver':
-    ensure => '2.6.0-1.el7',
+    require => Package['puppet-agent.x86_64'],
+    ensure => $serv_version,
   }
 
 # Change autosign.conf with entry "*.mihura.com"
@@ -23,6 +24,7 @@ class exit::master {
 
 # Start puppet server
   service { 'puppetserver':
+    require => File['/etc/puppetlabs/puppet/autosign.conf'],
     ensure => 'running',
   }
 }
