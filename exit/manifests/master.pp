@@ -16,6 +16,7 @@ class exit::master($serv_version = '2.6.0-1.el7') {
 
 # Change autosign.conf with entry "*.mihura.com"
   file { '/etc/puppetlabs/puppet/autosign.conf':
+    require => Package[$serv_version],
     content => template('/vagrant/exit/templates/master/autosign.conf.erb'),
     owner   => root,
     group   => root,
@@ -24,7 +25,7 @@ class exit::master($serv_version = '2.6.0-1.el7') {
 
 # Start puppet server
   service { 'puppetserver':
-    require => File['/etc/puppetlabs/puppet/autosign.conf'],
+    require => [ File['/etc/puppetlabs/puppet/autosign.conf'], Package[$serv_version] ],
     ensure => 'running',
   }
 }
