@@ -10,6 +10,7 @@ class exit::node {
 
 # Change puppet.conf with puppet server variable
   file { '/etc/puppetlabs/puppet/puppet.conf':
+    require => Package['puppet-agent.x86_64'],
     content => template('/vagrant/exit/templates/node/puppet.conf.erb'),
     owner   => root,
     group   => root,
@@ -18,6 +19,7 @@ class exit::node {
 
 # Run puppet agent
   service { 'puppet':
+    require => File['/etc/puppetlabs/puppet/puppet.conf'],
     ensure => 'running',
     enable => true,
   }
