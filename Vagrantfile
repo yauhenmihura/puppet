@@ -21,15 +21,13 @@ Vagrant.configure(2) do |config|
             node.vm.box = machine[:box]
             node.vm.hostname = machine[:hostname]
             node.vm.network "private_network", ip: machine[:ip]
-            node.vm.provision "shell", inline: <<-SHELL
-            rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-            yum install puppet -y
-	    source ~/.bash_profile
-	    puppet apply --modulepath=/vagrant/ -e "include exit"
-            SHELL
-              node.vm.provider "virtualbox" do |vb|
-                vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
-		end
+            node.vm.provider "virtualbox" do |vb|
+              vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
+	    end
+        config.vm.provision "puppet" do |puppet|
+          puppet.manifests_path = ["vm", "/vagrant/manifests"]
+          puppet.manifest_file = "init.pp"
+        end
 	end
     end
 end	
